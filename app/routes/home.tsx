@@ -3,7 +3,7 @@ import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
 import {resumes} from"../../constants";
 import {usePuterStore} from "~/lib/puter";
-import {useLocation} from "react-router-dom";
+import {useLocation} from "react-router";
 import {useNavigate} from "react-router";
 import {useEffect} from "react";
 
