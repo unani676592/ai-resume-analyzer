@@ -4,8 +4,8 @@ import ResumeCard from "~/components/ResumeCard";
 import {resumes} from"../../constants";
 import {usePuterStore} from "~/lib/puter";
 import {useLocation} from "react-router";
-import {useNavigate} from "react-router";
-import {useEffect} from "react";
+import {Link, useNavigate} from "react-router";
+import {useEffect, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
