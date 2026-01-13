@@ -1,28 +1,29 @@
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
-import {resumes} from"../../constants";
 import {usePuterStore} from "~/lib/puter";
-import {useLocation} from "react-router";
 import {Link, useNavigate} from "react-router";
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Resumind" },
-    { name: "description", content: "Smart Feedback tot your fram job!" },
+    { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
 
 export default function Home() {
-  const{ isLoading,auth } = usePuterStore();
-  const location = useLocation();
-  const next = location.search.split('next=')[1];
+  const { auth, kv } = usePuterStore();
   const navigate = useNavigate();
+  const [resumes, setResumes] = useState<Resume[]>([])
+  const [loadingResumes, setLoadingResumes] = useState(false);
 
   useEffect(() => {
-    if(auth.isAuthenticated) navigate('/auth?next=/');
+    if(!auth.isAuthenticated) navigate('/auth?next=/');
   }, [auth.isAuthenticated])
+
+
 
   return <main className="bg-[url('/images/bg-main.svg') bg-cover">
   <Navbar />
