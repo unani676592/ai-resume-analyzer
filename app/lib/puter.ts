@@ -96,10 +96,8 @@ interface PuterStore {
     clearError: () => void;
 }
 
-
 const getPuter = (): typeof window.puter | null =>
     typeof window !== "undefined" && window.puter ? window.puter : null;
-// Its a hook  that essentially creates the Zustand Store which loads all the necessary funtion within it...
 
 export const usePuterStore = create<PuterStore>((set, get) => {
     const setError = (msg: string) => {
@@ -352,10 +350,9 @@ export const usePuterStore = create<PuterStore>((set, get) => {
                     ],
                 },
             ],
-            { model: "gpt-4o-mini" }
+            { model: "claude-3-7-sonnet" }
         ) as Promise<AIResponse | undefined>;
     };
-
 
     const img2txt = async (image: string | File | Blob, testMode?: boolean) => {
         const puter = getPuter();
